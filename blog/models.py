@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Admin(models.Model):
     cedula_admin = models.CharField(max_length=11, primary_key= True)
-    Nombre1 = models.CharField(max_length= 50)
-    Nombre2 = models.CharField(max_length= 50)
-    Apellido1 = models.CharField(max_length= 50)
-    Apellido2 = models.CharField(max_length= 50)
+    nombre1 = models.CharField(max_length= 50)
+    nombre2 = models.CharField(max_length= 50)
+    apellido1 = models.CharField(max_length= 50)
+    apellido2 = models.CharField(max_length= 50)
 
     class Meta:
         ordering = ('-cedula_admin',)
@@ -40,16 +40,16 @@ class Producto(models.Model):
         return self.nombre_producto
 class Cliente(models.Model):
     id_cliente = models.CharField(max_length=200,primary_key= True)
-    Nombre1 = models.CharField(max_length=50)
-    Nombre2 = models.CharField(max_length=50)
-    Apellido1 = models.CharField(max_length=50)
-    Apellido2 = models.CharField(max_length=50)
-    Correo= models.EmailField(max_length=100)
-    Direccion = models.CharField(max_length=100)
-    Ciudad = models.CharField(max_length=50)
+    nombre1 = models.CharField(max_length=50)
+    nombre2 = models.CharField(max_length=50)
+    apellido1 = models.CharField(max_length=50)
+    apellido2 = models.CharField(max_length=50)
+    correo= models.EmailField(max_length=100)
+    direccion = models.CharField(max_length=100)
+    ciudad = models.CharField(max_length=50)
 
     class Meta:
-        ordering = ('-Nombre1', '-Apellido1')
+        ordering = ('-nombre1', '-apellido1')
 
     def __str__(self):
         return self.id_cliente
@@ -78,14 +78,14 @@ class Cuenta(models.Model):
         return self.id_carrito
 class Domiciliario(models.Model):
     id_domicilario = models.CharField(max_length=200, primary_key= True)
-    Nombre1 = models.CharField(max_length=50)
-    Nombre2 = models.CharField(max_length=50)
-    Apellido1 = models.CharField(max_length=50)
-    Apellido2 = models.CharField(max_length=50)
-    Medio_transporte = models.CharField(max_length=50)
+    nombre1 = models.CharField(max_length=50)
+    nombre2 = models.CharField(max_length=50)
+    apellido1 = models.CharField(max_length=50)
+    apellido2 = models.CharField(max_length=50)
+    medio_transporte = models.CharField(max_length=50)
 
     class Meta:
-        ordering = ('-id_domicilario', '-Medio_transporte')
+        ordering = ('-id_domicilario', '-medio_transporte')
 
     def __str__(self):
         return self.id_domicilario
