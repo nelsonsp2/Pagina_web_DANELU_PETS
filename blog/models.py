@@ -89,3 +89,16 @@ class Domiciliario(models.Model):
 
     def __str__(self):
         return self.id_domicilario
+
+class Domicilio(models.Model):
+    id_domicilio = models.CharField(max_length=200, primary_key=True)
+    id_domiciliario = models.ForeignKey(Domiciliario,on_delete=models.CASCADE)
+    direccion = models.CharField(max_length=100)
+    numero_cuenta = models.ForeignKey(Cuenta,on_delete=models.CASCADE)
+    metodo_de_pago = models.CharField(max_length=50)
+
+    class Meta:
+        ordering=('-id_domicilio','-id_domiciliario')
+
+    def __str__(self):
+        return self.id_domicilio
