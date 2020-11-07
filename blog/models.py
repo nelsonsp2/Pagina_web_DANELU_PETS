@@ -54,3 +54,26 @@ class Cliente(models.Model):
     def __str__(self):
         return self.id_cliente
 
+class Carrito(models.Model):
+    id_carrito = models.CharField(max_length=200, primary_key= True)
+    id_producto = models.CharField(max_length=200, primary_key=True)
+    cantidad_producto = models.SmallIntegerField()
+    total_producto = models.IntegerField()
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('-id_carrito', '-id_producto')
+
+    def __str__(self):
+        return self.id_carrito
+
+class Cuenta(models.Model):
+    numero_cuenta = models.CharField(max_length=200, primary_key= True)
+    valor_total = models.IntegerField()
+    id_carrito = models.ForeignKey(Carrito, on_delete= models.CASCADE)
+    class Meta:
+        ordering = ('-numero_cuenta', '-valor_total')
+
+    def __str__(self):
+        return self.id_carrito
+
