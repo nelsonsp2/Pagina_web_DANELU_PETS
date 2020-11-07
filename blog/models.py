@@ -56,7 +56,7 @@ class Cliente(models.Model):
 
 class Carrito(models.Model):
     id_carrito = models.CharField(max_length=200, primary_key= True)
-    id_producto = models.CharField(max_length=200, primary_key=True)
+    id_producto = models.CharField(max_length=200)
     cantidad_producto = models.SmallIntegerField()
     total_producto = models.IntegerField()
     id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
