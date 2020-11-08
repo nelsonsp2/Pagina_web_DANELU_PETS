@@ -67,8 +67,7 @@ class Carrito(models.Model):
     id_producto = models.CharField(max_length=200)
     cantidad_producto = models.SmallIntegerField()
     total_producto = models.IntegerField()
-    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-
+    id_cliente = models.models.ManyToManyField(Cliente)
     class Meta:
         ordering = ('-id_carrito', '-id_producto')
 
