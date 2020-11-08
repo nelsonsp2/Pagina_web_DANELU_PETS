@@ -90,7 +90,7 @@ class Domiciliario(models.Model):
 
     def __str__(self):
         return self.id_domiciliario
-#hola daniel
+
 
 class Domicilio(models.Model):
     id_domicilio = models.CharField(max_length=200, primary_key=True)
@@ -104,4 +104,5 @@ class Domicilio(models.Model):
 
     def __str__(self):
         return self.id_domicilio
+#hola chicos
 
