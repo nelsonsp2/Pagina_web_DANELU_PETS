@@ -78,7 +78,7 @@ class Cuenta(models.Model):
         return self.id_carrito
 
 class Domiciliario(models.Model):
-    id_domicilario = models.CharField(max_length=200, primary_key= True)
+    id_domiciliario = models.CharField(max_length=200, primary_key= True)
     Nombre1 = models.CharField(max_length=50)
     Nombre2 = models.CharField(max_length=50)
     Apellido1 = models.CharField(max_length=50)
@@ -86,11 +86,11 @@ class Domiciliario(models.Model):
     Medio_transporte = models.CharField(max_length=50)
 
     class Meta:
-        ordering = ('-id_domicilario', '-Medio_transporte')
+        ordering = ('-id_domiciliario', '-Medio_transporte')
 
     def __str__(self):
-        return self.id_domicilario
-
+        return self.id_domiciliario
+#hola daniel
 
 class Domicilio(models.Model):
     id_domicilio = models.CharField(max_length=200, primary_key=True)
