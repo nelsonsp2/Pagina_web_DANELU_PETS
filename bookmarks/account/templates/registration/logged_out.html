@@ -1,0 +1,11 @@
+{%  extends "base.html" %}
+
+{% block title %}Log-out{%  endblock %}
+
+{% block content %}
+    <h1>
+        Has cerrado sesion bien,
+        puedes volver a iniciar sesion
+        <a href="{% url "login" %}">aquí</a>
+    </h1>
+{%  endblock %}
