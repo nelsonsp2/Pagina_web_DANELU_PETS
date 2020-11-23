@@ -3,30 +3,36 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
+    <title >{% block title %}DANELU PETS SHOP{% endblock %}</title>
+    <link href="{% static "css/fontello.css" %}" rel="stylesheet">
     <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 <body>
-    <div id="header">
-       <span class="logo">Bookmarks</span>
-        {% if request.user.is_authenticated %}
-            <ul class="menu">
-                <li {% if section == "dashboard" %}class="selected"{% endif %} ><a href="{% url 'dashboard' %}">Mi panel principal</a></li>
-                <li {% if section == "imagenes"  %}class="selected"{% endif %} ><a href="#">Imágenes</a></li>
-                <li {% if section == "contactos" %}class="selected"{% endif %} ><a href="#">Contactos</a></li>
-            </ul>
+    <header>
+    <div class="container">
+       <h1 class="icon-guidedog" style="color: blueviolet" >DANELU PETS SHOP</h1>
+        <input type="checkbox" id="menubar">
+        <label class="icon-menu" for="menubar"></label>
+        <nav class="menu">
+            {% if request.user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}">HOME</a>
+                    <a href="#">Imágenes</a>
+                    <a href="#">Contactos</a>
+                    <a href="{% url "logout" %}">Cerrar sesión</a>
+            {% else %}
+                <a href="{% url 'dashboard' %}">HOME</a>
+                <a href="#">Imágenes</a>
+                <a href="#">Contactos</a>
+                <a href="{% url "login" %}">Iniciar sesión</a>
+            {% endif %}
+        </nav>
+        <span class="user">
+             {% if request.user.is_authenticated %}
+                <h2>Bienvenido {{ request.user.first_name }}</h2>
         {% endif %}
-
-    <span class="user">
-        {% if request.user.is_authenticated%}
-            Hola {{ request.user.first_name }}
-            <a href="{% url "logout" %}">Cerrar sesión</a>
-        {% else %}
-            <a href="{% url "login" %}">Iniciar sesión</a>
-        {% endif %}
-    </span>
-
+         </span>
     </div>
+    </header>
     <div id="content">
         {% block content %}
         {% endblock %}
