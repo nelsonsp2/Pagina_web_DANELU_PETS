@@ -26,18 +26,20 @@ SECRET_KEY = '+dr3ud(+m%ya(-=#r&l-pj-$rw-_2(1_bs%5^v7_snd)7tujf*'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
+    'account.apps.AccountConfig',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [

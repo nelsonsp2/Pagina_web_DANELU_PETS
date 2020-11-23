@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Log-in{% endblock %}
+{% block content %}
+    <h1>Log-in</h1>
+    {% if form.errors %}
+    <p>
+        Su usuario o contraseña no son correctas :c porfis intentalo de nuevo
+    </p>
+    {% else %}
+        <p> Por favor usa el siguiente formulario para iniciar :3</p>
+    {% endif %}
+    <div class="login-form">
+        <form action="{%  url 'login' %}" method="post">
+            {{ form.as_p }}
+            {%  csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p><input type="submit" value="Inicar sesion sii"></p>
+
+        </form>
+
+    </div>
+{% endblock %}
