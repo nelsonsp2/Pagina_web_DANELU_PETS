@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title >{% block title %}DANELU PETS SHOP{% endblock %}</title>
     <link href="{% static "css/fontello.css" %}" rel="stylesheet">
-    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <link href="{% static "css/Estilo.css" %}" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -37,5 +37,10 @@
         {% block content %}
         {% endblock %}
     </div>
+    <main>
+        <section id="banner">
+            <img src="{% static "img/banner.jpg" %}">
+        </section>
+    </main>
 </body>
 </html>

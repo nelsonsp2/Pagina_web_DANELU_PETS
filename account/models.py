@@ -33,6 +33,7 @@ class Producto(models.Model):
     nombre_producto = models.CharField(max_length=200)
     precio_producto = models.IntegerField()
     precio_produccion = models.IntegerField()
+    picture = models.ImageField()
     categoria_producto = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     especificaciones = models.CharField(max_length=1000, default=None)
     admin_producto = models.ForeignKey(Admin, on_delete=models.DO_NOTHING)
