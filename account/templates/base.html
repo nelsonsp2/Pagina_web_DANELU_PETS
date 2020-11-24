@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title >{% block title %}DANELU PETS SHOP{% endblock %}</title>
+    <link href="{% static "css/fontello.css" %}" rel="stylesheet">
+    <link href="{% static "css/Estilo.css" %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+    <div class="container">
+       <h1 class="icon-guidedog" style="color: blueviolet" >DANELU PETS SHOP</h1>
+        <input type="checkbox" id="menubar">
+        <label class="icon-menu" for="menubar"></label>
+        <nav class="menu">
+            {% if request.user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}">HOME</a>
+                    <a href="#">Imágenes</a>
+                    <a href="#">Contactos</a>
+                    <a href="{% url "logout" %}">Cerrar sesión</a>
+            {% else %}
+                <a href="{% url 'dashboard' %}">HOME</a>
+                <a href="#">Imágenes</a>
+                <a href="#">Contactos</a>
+                <a href="{% url "login" %}">Iniciar sesión</a>
+            {% endif %}
+        </nav>
+        <span class="user">
+             {% if request.user.is_authenticated %}
+                <h2>Bienvenido {{ request.user.first_name }}</h2>
+        {% endif %}
+         </span>
+    </div>
+    </header>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <main>
+        <section id="banner">
+            <img src="{% static "img/banner.jpg" %}">
+        </section>
+    </main>
+</body>
+</html>
