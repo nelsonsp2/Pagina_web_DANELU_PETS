@@ -12,7 +12,7 @@ body{
 header{
     width: 100%;
     height: 50px;
-    background: aliceblue;
+    background: lightseagreen;
     position: fixed;
 }
 
@@ -24,8 +24,10 @@ header{
 
 h1{
     float: left;
+    color: mintcream;
 }
 
 header .container{
     display: table;
 }
+

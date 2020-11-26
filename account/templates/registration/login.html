@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+
 
 {% block title %}Log-in{% endblock %}
 {% block content %}
@@ -10,7 +10,7 @@
     {% else %}
         <p> Por favor usa el siguiente formulario para iniciar :3</p>
     {% endif %}
-    <div class="login-form">
+    <div style="position: center" class="login-form">
         <form action="{%  url 'login' %}" method="post">
             {{ form.as_p }}
             {%  csrf_token %}

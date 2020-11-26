@@ -1,15 +1,14 @@
-{% extends "base.html" %}
 
-{% block title %}
-    log-in
-{%  endblock %}
+
+
 
 {% block content %}
-    <h1>Log-in</h1>
+    <h1 style="position: center">Log-in</h1>
     <p>Holi uwu llena esto porfis :3 TQM</p>
-    <form method="post">
+    <form style="position: center" method="post">
         {{  form.as_p }}
     {%  csrf_token %}
     <p><input type="submit" value="Log in"></p>
+        <a href="{% url 'register'%}">Registrese</a>
     </form>
 {%  endblock %}
