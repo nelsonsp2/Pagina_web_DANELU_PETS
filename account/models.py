@@ -1,25 +1,23 @@
+
 from django.db import models
-from django.db import models
-from django.contrib.auth.models import User
-from manejo_producto.models import Admin
-from manejo_producto.models import Producto
-from manejo_producto.models import Categoria
+
+
 # Create your models here.
 class Cliente(models.Model):
-    id_cliente = models.CharField(max_length=200, primary_key=True)
-    nombre1 = models.CharField(max_length=50)
-    nombre2 = models.CharField(max_length=50)
-    apellido1 = models.CharField(max_length=50)
-    apellido2 = models.CharField(max_length=50)
+    cédula = models.CharField(max_length=200, primary_key=True)
+    primer_nombre = models.CharField(max_length=50)
+    segundo_nombre = models.CharField(max_length=50)
+    primer_apellido= models.CharField(max_length=50)
+    segundo_apellido= models.CharField(max_length=50)
     correo = models.EmailField(max_length=100)
-    direccion = models.CharField(max_length=100)
+    dirección= models.CharField(max_length=100)
     ciudad = models.CharField(max_length=50)
 
     class Meta:
-        ordering = ('-nombre1', '-apellido1')
+        ordering = ('-primer_nombre', '-primer_apellido')
 
     def __str__(self):
-        return self.id_cliente
+        return self.cédula
 
 
 class Carrito(models.Model):

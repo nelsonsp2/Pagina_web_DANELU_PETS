@@ -1,12 +1,14 @@
 from django.http import HttpResponse, request
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .forms import LoginForm , CreateUserForm
+from .forms import LoginForm , CreateUserForm, CreateClienteform
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from .models import Cliente
 
 
+#------------------------------------
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -18,19 +20,22 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse('Usuario autenticado satisfactoriamente')
+                    return redirect('dahboards')
                 else:
-                    return HttpResponse('La cuenta está inactiva')
+                    return redirect('registro')
             else:
-                return HttpResponse('Login inválido')
+                return redirect('registro')
     else:
         form = LoginForm()
+
     return render(request, 'account/login.html', {'form': form})
 
 
 @login_required
 def dashboad(request):
     return render(request, 'account/dashboard.html', {'section': 'dashboard'})
+
+
 
 
 def registerPage(request):
@@ -45,3 +50,18 @@ def registerPage(request):
 
     context = {'form': form}
     return render(request, 'account/register.html', context)
+
+def registrarCliente (request):
+    form = CreateClienteform()
+    if request.method == 'POST':
+        form = CreateClienteform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('register')
+        else:
+            return HttpResponse('Algo salio mal')
+    else:
+        context = {'form': form}
+        return render(request, 'account/registro.html', context)
+
+
