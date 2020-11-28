@@ -20,7 +20,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('dahboards')
+                    return redirect('dashboard')
                 else:
                     return redirect('registro')
             else:
