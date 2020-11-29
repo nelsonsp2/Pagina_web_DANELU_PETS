@@ -1,13 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
 *{
     margin: 0px;
-
 }
+body{
+    font-family: 'Nerko One', cursive;
+}
+
 
 div#general{
     margin: auto;
     margin-top: 20px;
     width: 600px;
-    height: 700px;
+    height: 400px;
     background-color: lightseagreen;
 
 }
