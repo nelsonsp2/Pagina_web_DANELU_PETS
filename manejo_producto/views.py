@@ -20,7 +20,7 @@ def publicar(request):
         else:
             return HttpResponse('Su producto ingresado no es valido')
     else:
-        return render(request, 'manejo_producto/modificar_producto.html', {'modificar_producto':upload}))
+        return render(request, 'manejo_producto/modificar_producto.html', {'modificar_producto':upload})
 
 def modificar(request, id_producto):
     id_producto = int(id_producto)

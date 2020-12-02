@@ -26,21 +26,24 @@ SECRET_KEY = '+dr3ud(+m%ya(-=#r&l-pj-$rw-_2(1_bs%5^v7_snd)7tujf*'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
-    'django.contrib.admin',
+
     'manejo_producto.apps.ManejoProductoConfig',
+    'carrito_compra.apps.CarritoCompraConfig'
+
 ]
 
 MIDDLEWARE = [
@@ -82,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'danelu_pet_shop',
         'USER': 'postgres',
-        'PASSWORD': '161229Cnddynvntn',
+        'PASSWORD': 'POSTGRES',
         'HOST': 'localhost',
         'PORT': '5432',
     }
