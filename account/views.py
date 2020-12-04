@@ -20,7 +20,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('carrito_compra/home')
+                    return redirect('carrito_compra:home')
                 else:
                     return redirect('registro')
             else:

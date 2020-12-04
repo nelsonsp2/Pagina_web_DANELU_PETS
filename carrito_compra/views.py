@@ -5,6 +5,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.contrib import messages
+
+
 # Create your views here.
 
 
@@ -29,19 +31,18 @@ class ProductDetailView(DetailView):
     template_name = "product.html"
 
 
-#funcion para agegar elementos al carrito, primero revisa si la
-#pedido no esta activo antes de agregar elementos a el
+# funcion para agegar elementos al carrito, primero revisa si la
+# pedido no esta activo antes de agregar elementos a el
 
 
 def agregar_al_carrito(request, slug):
-
     item = get_object_or_404(Producto, slug=slug)
     producto_carrito = ProductoCarrito.objects.create(item=item)
-    #producto_carrito, created = ProductoCarrito.objects.get_or_create(item=item, usuario=request.user, orden =False)
+    # producto_carrito, created = ProductoCarrito.objects.get_or_create(item=item, usuario=request.user, orden =False)
     pedido_qs = Carrito.objects.filter(usuario=request.user, orden=False)
     if pedido_qs.exists():
         pedido = pedido_qs[0]
-       #revisamos si el producto a agregar ya esta en el pedido
+        # revisamos si el producto a agregar ya esta en el pedido
         if pedido.items.filter(item__slug=item.slug).exists():
             producto_carrito.cantidad += 1
             producto_carrito.save()
@@ -61,7 +62,7 @@ def agregar_al_carrito(request, slug):
     return redirect("carrito_compra:product", slug=slug)
 
 
-#funcion de borrado de elementos del carrito
+# funcion de borrado de elementos del carrito
 def borrar_del_carrito(request, slug):
     item = get_object_or_404(Producto, slug=slug)
     # producto_carrito, created = ProductoCarrito.objects.get_or_create(item=item, usuario=request.user, orden =False)
@@ -82,5 +83,5 @@ def borrar_del_carrito(request, slug):
         messages.info(request, "Usted no tiene una orden activa.")
         return redirect("carrito_compra:product", slug=slug)
 
-    messages.info(request, "Usted no tiene una orden activa.")
+    # messages.info(request, "Usted no tiene una orden activa.")
     return redirect("carrito_compra:product", slug=slug)

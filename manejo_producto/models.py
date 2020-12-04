@@ -15,6 +15,7 @@ class Admin(models.Model):
     def __str__(self):
         return self.cedula_admin
 
+
 class Categoria(models.Model):
     id_categoria = models.CharField(max_length=200, primary_key=True)
     nombre_categoria = models.CharField(max_length=50)
