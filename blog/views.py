@@ -6,11 +6,11 @@ from django.http import HttpResponse
 
 def index(request):
     shelf=Domiciliario.objects.all()
-    return render (request, 'Domiciliario/library.html',{'shelf':shelf})
+    return render (request, 'blog/domiciliarios.html',{'shelf':shelf})
 
 def upload(request):
     upload = DomiciliarioCreate()
-    if request.method =='POST':
+    if request.method == 'POST':
         upload = DomiciliarioCreate(request.POST, request.FILES)
         if upload.is_valid():
             upload.save()
@@ -18,7 +18,7 @@ def upload(request):
         else:
             return HttpResponse('Los datos dados no son validos')
     else:
-        return render(request, 'Domiciliario/upload_form.html',{'upload_form':upload})
+        return render(request, 'blog/upload_form.html',{'upload_form':upload})
 
 
 def delete_Domiciliario(request, Domiciliario_id):

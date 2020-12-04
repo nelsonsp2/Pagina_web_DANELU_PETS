@@ -7,13 +7,13 @@
         </h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <table class="w-50 table-light">
+            <table class="w-50 table table-light">
                 {% for field in upload_form %}
                     <tr>
                         <th> {{  field.label }} </th>
                         <th> {{   field }}  </th>
                     </tr>
-                {% end for %}
+                {% endfor %}
             </table>
             <buttom type="submit" class="btn btn-lg btn-primary">
                 Guardar informacion

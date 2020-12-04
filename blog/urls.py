@@ -5,7 +5,7 @@ from proyectazo.settings import DEBUG, STATIC_URL, STATIC_ROOT, MEDIA_URL, MEDIA
 from django.conf.urls.static import static
 urlpatterns = [
     path('', views.index, name='index'),
-    path('upload/', views.index, name='upload-Domiciliario'),
+    path('upload/', views.upload, name='upload-Domiciliario'),
     path('update/<int:Domiciliario_id>', views.update_Domiciliario),
     path('delete/<int:Domiciliario_id>', views.delete_Domiciliario),
 ]
