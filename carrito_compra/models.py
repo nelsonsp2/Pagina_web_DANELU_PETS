@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
-
+#from django.auth.models import user
 
 class Categoria(models.Model):
     id_categoria = models.CharField(max_length=200, primary_key=True)
@@ -25,7 +25,7 @@ ETIQUETAS = (
 
 class Producto(models.Model):
     nombre = models.CharField(max_length=100)
-    precio = models.FloatField()
+    precio = models.IntegerField()
     precio_descuento = models.FloatField(blank=True, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     etiqueta = models.CharField(choices=ETIQUETAS, max_length=1)
@@ -62,7 +62,7 @@ class ProductoCarrito(models.Model):
 
 
 class Carrito(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     items = models.ManyToManyField(ProductoCarrito)
     fecha_inicio = models.DateTimeField(auto_now_add=True)
     fecha_pedido = models.DateTimeField()

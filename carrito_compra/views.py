@@ -31,11 +31,6 @@ class ProductDetailView(DetailView):
 
 #funcion para agegar elementos al carrito, primero revisa si la
 #pedido no esta activo antes de agregar elementos a el
-def get_username(self, user_id):
-    try:
-        return User.objects.get(pk=user_id)
-    except User.DoesNotExist:
-        return None
 
 
 def agregar_al_carrito(request, slug):
@@ -43,8 +38,7 @@ def agregar_al_carrito(request, slug):
     item = get_object_or_404(Producto, slug=slug)
     producto_carrito = ProductoCarrito.objects.create(item=item)
     #producto_carrito, created = ProductoCarrito.objects.get_or_create(item=item, usuario=request.user, orden =False)
-    #usuario = User.objects.get(username=request.user.pk)
-    pedido_qs = Carrito.objects.filter(usuario=request.user.pk, orden=False)
+    pedido_qs = Carrito.objects.filter(usuario=request.user, orden=False)
     if pedido_qs.exists():
         pedido = pedido_qs[0]
        #revisamos si el producto a agregar ya esta en el pedido
@@ -59,7 +53,7 @@ def agregar_al_carrito(request, slug):
             return redirect("carrito_compra:product", slug=slug)
     else:
         fecha_pedido = timezone.now()
-        pedido = Carrito.objects.create(usuario=request.user.pk, fecha_pedido=fecha_pedido)
+        pedido = Carrito.objects.create(usuario=request.user, fecha_pedido=fecha_pedido)
         pedido.items.add(producto_carrito)
         messages.info(request, "Este producto fue agregado a tu carrito.")
         return redirect("carrito_compra:product", slug=slug)
@@ -67,10 +61,10 @@ def agregar_al_carrito(request, slug):
     return redirect("carrito_compra:product", slug=slug)
 
 
+#funcion de borrado de elementos del carrito
 def borrar_del_carrito(request, slug):
-    """item = get_object_or_404(Producto, slug=slug)
+    item = get_object_or_404(Producto, slug=slug)
     # producto_carrito, created = ProductoCarrito.objects.get_or_create(item=item, usuario=request.user, orden =False)
-    # usuario = User.objects.get(username=request.user.pk)
     pedido_qs = Carrito.objects.filter(usuario=request.user.pk, orden=False)
     if pedido_qs.exists():
         pedido = pedido_qs[0]
@@ -86,7 +80,7 @@ def borrar_del_carrito(request, slug):
             return redirect("carrito_compra_product", sulg=slug)
     else:
         messages.info(request, "Usted no tiene una orden activa.")
-        return redirect("carrito_compra:product", slug=slug)"""
+        return redirect("carrito_compra:product", slug=slug)
 
     messages.info(request, "Usted no tiene una orden activa.")
     return redirect("carrito_compra:product", slug=slug)

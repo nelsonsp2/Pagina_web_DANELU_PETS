@@ -24,15 +24,19 @@
 
             <div class="mb-3">
               <a href="">
-                <span class="badge purple mr-1">{{ object.categoria}}</span>
+                <span class=" badge purple mr-5">{{ object.categoria}}</span>
               </a>
 
             </div>
 
+            <p class="lead font-weight-bold">{{ object.nombre}}</p>
+
+
+
             <p class="lead">
               {% if object.precio_descuento %}
               <span class="mr-1">
-                <del>{{object.precio }}</del>
+                Precio: $<del> {{object.precio }}</del>
               </span>
               <span>${{ object.precio_descuento}}</span>
               {% else %}

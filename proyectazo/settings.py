@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'proyectazo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'danelu_pet_shop',
+        'NAME': 'dalune_pet_shop',
         'USER': 'postgres',
         'PASSWORD': 'POSTGRES',
         'HOST': 'localhost',
