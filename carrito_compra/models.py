@@ -1,9 +1,11 @@
 from django.db import models
 from django.conf import settings
 from django.shortcuts import reverse
-
+from django.contrib.auth.models import User
+from django.contrib import auth
 #from django. import
 # Create your models here.
+#import authentication
 
 
 class Categoria(models.Model):
@@ -42,15 +44,19 @@ class Producto(models.Model):
             'slug': self.slug
         })
 
-    def get_add_to_cart_url(self):
-        return reverse("carrito_compra:add-to-cart", kwargs={
+    def get_agregar_al_carrito_url(self):
+        return reverse("carrito_compra:agregar-al-carrito", kwargs={
+            'slug': self.slug
+        })
+
+    def get_borrar_del_carrito_url(self):
+        return reverse("carrito_compra:borrar-del-carrito", kwargs={
             'slug': self.slug
         })
 
 
 class ProductoCarrito(models.Model):
-    #usuario = models.ForeignKey(Cliente, on_delete=models.CASCADE,
-     #                           )
+    #usuario = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     #orden = models.BooleanField(default=False)
     item = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField(default=1)
@@ -60,11 +66,11 @@ class ProductoCarrito(models.Model):
 
 
 class Carrito(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    orden = models.BooleanField(default=False)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     items = models.ManyToManyField(ProductoCarrito)
     fecha_inicio = models.DateTimeField(auto_now_add=True)
     fecha_pedido = models.DateTimeField()
+    orden = models.BooleanField(default=False)
 
     def __str__(self):
         return self.usuario

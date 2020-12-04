@@ -53,8 +53,13 @@
               </button>
 
             </form> {% endcomment %}
-            <a href="{{object.get_add_to_cart_url}}" class="btn btn-primary btn-md my-0 p" >
+            <a href="{{ object.get_agregar_al_carrito_url }}" class="btn btn-primary btn-md my-0 p" >
               Agregar al carrito
+              <i class="fas fa-shopping-cart ml-1"></i>
+            </a>
+
+            <a href="{{ object.get_borrar_del_carrito_url }}" class="btn btn-danger btn-md my-0 p" >
+              Borrar del carrito
               <i class="fas fa-shopping-cart ml-1"></i>
             </a>
 

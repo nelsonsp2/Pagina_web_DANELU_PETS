@@ -20,7 +20,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('dashboard')
+                    return redirect('carrito_compra/home')
                 else:
                     return redirect('registro')
             else:
@@ -34,7 +34,6 @@ def user_login(request):
 @login_required
 def dashboad(request):
     return render(request, 'account/dashboard.html', {'section': 'dashboard'})
-
 
 
 
