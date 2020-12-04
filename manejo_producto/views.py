@@ -20,15 +20,17 @@ def publicar(request):
         else:
             return HttpResponse('Su producto ingresado no es valido')
     else:
-        return render(request, 'manejo_producto/modificar_producto.html', {'modificar_producto':upload}))
+        return render(request, 'manejo_producto/modificar_producto.html', {'modificar_producto':upload})
 
-def modificar(request, id_producto):
+def modificar (request, id_producto) :
+
     id_producto = int(id_producto)
     try:
         producto_buscar = Producto.objects.get(id = id_producto)
     except Producto.DoesNotExist:
         return redirect('estanteria')
-    producto_form  = crear_producto(resquest.POST or None, instance= producto_buscar)
+    producto_form  = crear_producto(request.POST or None, instance= producto_buscar)
+
     if producto_form.is_valid():
         producto_form.save()
         return redirect('estanteria')
